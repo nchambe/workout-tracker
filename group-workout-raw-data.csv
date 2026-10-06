@@ -1,0 +1,24 @@
+Timestamp,Date,Name,Day,Entry_Type,Activity,Machine_or_Setting,Sets,Reps,Weight_lb,RPE
+2026-10-06T11:24:35.881Z,10/6/2026,Nate,Tuesday,Cardio,Elliptical,Level 10 for 55-70 rpm,,,,7
+2026-10-06T11:32:49.181Z,10/6/2026,Nate,Tuesday,Exercise,Romanian Deadlift,Smith machine,3,8|10|10,20,
+2026-10-06T11:39:39.804Z,10/6/2026,Nate,Tuesday,Exercise,Chest Press,Seated Chest Press,3,12|12|12,90,
+2026-10-06T11:43:32.515Z,10/6/2026,Nate,Tuesday,Exercise,Leg Press,Leg Press machine,3,10|10|10,120,
+2026-10-06T11:47:15.924Z,10/6/2026,Nate,Tuesday,Exercise,Shoulder Press,Shoulder Press machine,3,10|10|10,50,
+2026-10-06T11:51:00.146Z,10/6/2026,Nate,Tuesday,Exercise,Seated Row,Seated Row machine,3,8|8|8,120,
+2026-10-06T11:53:48.978Z,10/6/2026,Nate,Tuesday,Exercise,Lat Pulldown,Lat Pulldown machine,3,10|10|10,80,
+2026-10-06T11:57:22.161Z,10/6/2026,Nate,Tuesday,Exercise,Ab Crunch,Abdominal Crunch machine,3,10|10|10,100,
+2026-10-06T11:24:00.929Z,10/6/2026,Katrina,Tuesday,Cardio,Elliptical,4-5,,,,4
+2026-10-06T11:32:53.283Z,10/6/2026,Katrina,Tuesday,Exercise,Romanian Deadlift,Smith machine,3,10|10|10,20,
+2026-10-06T11:38:12.652Z,10/6/2026,Katrina,Tuesday,Exercise,Leg Press,Leg Press machine,3,10|10|10,60,
+2026-10-06T11:43:26.107Z,10/6/2026,Katrina,Tuesday,Exercise,Seated Row,Seated Row machine,3,10|10|10,40,
+2026-10-06T11:47:19.052Z,10/6/2026,Katrina,Tuesday,Exercise,Lat Pulldown,Lat Pulldown machine,3,10|10|10,50,
+2026-10-06T11:51:41.389Z,10/6/2026,Katrina,Tuesday,Exercise,Shoulder Press,Shoulder Press machine,3,10|10|10,20,
+2026-10-06T11:52:46.057Z,10/6/2026,Katrina,Tuesday,Exercise,Chest Press,Seated Chest Press,3,10|10|10,30,
+2026-10-06T11:58:41.392Z,10/6/2026,Katrina,Tuesday,Exercise,Ab Crunch,Abdominal Crunch machine,3,10|10|10,40,
+2026-10-06T11:24:35.881Z,10/6/2026,William,Tuesday,Cardio,Elliptical,Up to 14,,,,8
+2026-10-06T11:32:49.181Z,10/6/2026,William,Tuesday,Exercise,Romanian Deadlift,Smith machine,3,10|10|10,20,
+2026-10-06T11:39:39.804Z,10/6/2026,William,Tuesday,Exercise,Chest Press,Seated Chest Press,3,10|10|10,50,
+2026-10-06T11:43:32.515Z,10/6/2026,William,Tuesday,Exercise,Leg Press,Leg Press machine,3,10|10|10,80,
+2026-10-06T11:47:15.924Z,10/6/2026,William,Tuesday,Exercise,Shoulder Press,Shoulder Press machine,3,8|8|8,30,
+2026-10-06T11:51:00.146Z,10/6/2026,William,Tuesday,Exercise,Seated Row,Seated Row machine,3,10|10|10,50,
+2026-10-06T11:57:22.161Z,10/6/2026,William,Tuesday,Exercise,Bicep curl,Bicep curl machine,3,10|10|10,40,
