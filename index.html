@@ -87,7 +87,7 @@
 </style>
 
 <style id="history-enhancements">
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;position:sticky;top:0;z-index:30;background:var(--bg);padding:5px 0 8px}.tab{min-height:48px;border:2px solid var(--line);background:#fff;border-radius:14px;font-weight:900;cursor:pointer}.tab.active{background:var(--primary);border-color:var(--primary);color:#fff}.app-view{display:none}.app-view.active{display:block}.syncrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.syncdot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#aaa;margin-right:6px}.syncdot.good{background:var(--good)}.syncdot.warn{background:#d69e00}.syncdot.bad{background:#b33}.compact-tools{display:flex;gap:8px;flex-wrap:wrap}.compact-btn{border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 11px;font-weight:850;cursor:pointer}.info-note{margin-top:10px;background:var(--soft);border:1px solid #cad9ff;border-radius:14px;padding:11px 12px;color:#294a8a;line-height:1.35}.challenge-note{margin-top:7px;font-weight:900}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:11px}.stat strong{display:block;font-size:22px;color:var(--primary)}.select{width:100%;min-height:54px;border:2px solid var(--line);border-radius:14px;background:#fff;padding:9px 11px;font-size:17px;font-weight:800;color:var(--text)}.metric-toggle{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.metricbtn{min-height:43px;border:2px solid var(--line);background:#fff;border-radius:12px;font-weight:850;cursor:pointer}.metricbtn.active{background:var(--primary);border-color:var(--primary);color:#fff}.chartbox{width:100%;min-height:260px;border:1px solid var(--line);border-radius:15px;background:#fff;padding:6px;margin-top:10px;overflow:hidden}.chartbox svg{width:100%;height:260px;display:block}.chart-empty{height:250px;display:grid;place-items:center;color:var(--muted);text-align:center;padding:20px}.session{border:1px solid var(--line);border-radius:15px;padding:12px;margin:9px 0;background:#fff}.session.past{opacity:.72}.session .exlist{margin:8px 0 0;padding-left:20px;color:#445}.session .exlist li{margin:3px 0}.phase{font-size:12px;font-weight:900;color:var(--primary);margin-top:4px}.week-label{font-size:12px;color:var(--muted);margin-top:3px}.badge.good{background:var(--softgreen);color:var(--good)}.badge.warn{background:#fff2c8;color:#856000}.shared-source{font-size:12px;color:var(--muted);margin-top:7px}#csvManual{display:none}@media(max-width:640px){.stats{grid-template-columns:repeat(3,1fr)}.tabs{top:0}}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;position:sticky;top:0;z-index:30;background:var(--bg);padding:5px 0 8px}.tab{min-height:48px;border:2px solid var(--line);background:#fff;border-radius:14px;font-weight:900;cursor:pointer}.tab.active{background:var(--primary);border-color:var(--primary);color:#fff}.app-view{display:none}.app-view.active{display:block}.syncrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.syncdot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#aaa;margin-right:6px}.syncdot.good{background:var(--good)}.syncdot.warn{background:#d69e00}.syncdot.bad{background:#b33}.compact-tools{display:flex;gap:8px;flex-wrap:wrap}.compact-btn{border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 11px;font-weight:850;cursor:pointer}.info-note{margin-top:10px;background:var(--soft);border:1px solid #cad9ff;border-radius:14px;padding:11px 12px;color:#294a8a;line-height:1.35}.challenge-note{margin-top:7px;font-weight:900}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:11px}.stat strong{display:block;font-size:22px;color:var(--primary)}.select{width:100%;min-height:54px;border:2px solid var(--line);border-radius:14px;background:#fff;padding:9px 11px;font-size:17px;font-weight:800;color:var(--text)}.metric-toggle{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.metricbtn{min-height:43px;border:2px solid var(--line);background:#fff;border-radius:12px;font-weight:850;cursor:pointer}.metricbtn.active{background:var(--primary);border-color:var(--primary);color:#fff}.chartbox{width:100%;min-height:260px;border:1px solid var(--line);border-radius:15px;background:#fff;padding:6px;margin-top:10px;overflow:hidden}.chartbox svg{width:100%;height:260px;display:block}.chart-empty{height:250px;display:grid;place-items:center;color:var(--muted);text-align:center;padding:20px}.session{border:1px solid var(--line);border-radius:15px;padding:12px;margin:9px 0;background:#fff}.session.past{opacity:.72}.session .exlist{margin:8px 0 0;padding-left:20px;color:#445}.session .exlist li{margin:3px 0}.phase{font-size:12px;font-weight:900;color:var(--primary);margin-top:4px}.week-label{font-size:12px;color:var(--muted);margin-top:3px}.badge.good{background:var(--softgreen);color:var(--good)}.badge.warn{background:#fff2c8;color:#856000}.shared-source{font-size:12px;color:var(--muted);margin-top:7px}#encManual{display:none}@media(max-width:640px){.stats{grid-template-columns:repeat(3,1fr)}.tabs{top:0}}
 </style>
 </head>
 <body>
@@ -539,10 +539,10 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
 
 <script id="history-enhancements-js">
 (function(){
-  const RAW_URL='https://raw.githubusercontent.com/nchambe/workout-tracker/main/group-workout-raw-data.csv';
+  const RAW_URL='https://raw.githubusercontent.com/nchambe/workout-tracker/main/group-workout-raw-data.enc';
   const PROGRAM_START='2026-10-06', PROGRAM_WEEKS=8;
-  let remoteEntries=[]; let syncState='idle', syncMessage='Not synced yet'; let chartMetric='weight';
-  try{remoteEntries=JSON.parse(localStorage.getItem('cachedRemoteEntries')||'[]')||[]}catch(e){}
+  let remoteEntries=[]; let syncState='idle', syncMessage='Shared history locked'; let chartMetric='weight'; let sharedUnlocked=false;
+  try{localStorage.removeItem('cachedRemoteEntries')}catch(e){}
 
   function nname(s){return String(s||'').trim().toLowerCase()}
   function parseDateKey(s){const m=String(s||'').match(/^(\d{4})-(\d{2})-(\d{2})$/);if(m)return new Date(+m[1],+m[2]-1,+m[3]);const d=new Date(s);return Number.isNaN(d.getTime())?null:d}
@@ -573,14 +573,14 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
   const children=[...wrap.children].filter(x=>x!==header);
   children.forEach(el=>{const t=el.querySelector?.('.section-title')?.textContent?.trim();(t==='Recent entries'?past:today).appendChild(el)});
   header.after(tabs);tabs.after(today);today.after(past);past.after(future);
-  tabs.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{tabs.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));[today,past,future].forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.v).classList.add('active');if(b.dataset.v==='enhPast')renderPast();if(b.dataset.v==='enhFuture')renderFuture()});
+  tabs.querySelectorAll('.tab').forEach(b=>b.onclick=async()=>{tabs.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));[today,past,future].forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.v).classList.add('active');if(b.dataset.v==='enhPast'){if(!sharedUnlocked)await unlockSharedHistory();renderPast()}if(b.dataset.v==='enhFuture')renderFuture()});
 
   // Week label and non-workout wording.
   const dateEl=document.getElementById('dateLabel');const wl=document.createElement('div');wl.className='week-label';const wk=pweek(todayKey);wl.textContent=wk?`Week ${wk} of 8 · ${phase(wk)}`:'Outside the 8-week program window';dateEl.after(wl);
   const nw=document.getElementById('notWorkout');if(nw)nw.querySelector('.notice').innerHTML='<strong>Not a scheduled workout day.</strong><br>Use <strong>Past</strong> to review progress or <strong>Future</strong> to preview upcoming Tuesday/Wednesday sessions.';
 
   // Past UI.
-  const syncCard=document.createElement('div');syncCard.className='card';syncCard.innerHTML=`<div class="section-title">Shared history</div><div class="syncrow"><div id="syncStatus"><span class="syncdot"></span>Not synced yet</div><div class="compact-tools"><button class="compact-btn" id="syncRefresh">Refresh</button><label class="compact-btn" for="csvManual">Load CSV manually</label><input id="csvManual" type="file" accept=".csv,text/csv"></div></div><div class="shared-source">Source: GitHub group-workout-raw-data.csv. Local phone entries are merged automatically.</div>`;
+  const syncCard=document.createElement('div');syncCard.className='card';syncCard.innerHTML=`<div class="section-title">Shared history</div><div class="syncrow"><div id="syncStatus"><span class="syncdot"></span>Shared history locked</div><div class="compact-tools"><button class="compact-btn" id="syncRefresh">Unlock history</button><button class="compact-btn hide" id="lockHistory">Lock</button><label class="compact-btn" for="encManual">Load encrypted file</label><input id="encManual" type="file" accept=".enc,.json,application/json,text/plain"></div></div><div class="shared-source">Source: encrypted GitHub file <strong>group-workout-raw-data.enc</strong>. Your password is never stored in GitHub.</div>`;
   const statsCard=document.createElement('div');statsCard.className='card';statsCard.innerHTML='<div class="section-title">Progress summary</div><div class="stats"><div class="stat"><strong id="stDays">0</strong><span>workout days</span></div><div class="stat"><strong id="stLifts">0</strong><span>lift entries</span></div><div class="stat"><strong id="stCardio">0</strong><span>cardio starts</span></div></div>';
   const chartCard=document.createElement('div');chartCard.className='card';chartCard.innerHTML='<div class="section-title">Exercise progress</div><select id="histExercise" class="select"></select><div class="metric-toggle"><button class="metricbtn active" data-m="weight">Weight used</button><button class="metricbtn" data-m="volume">Training volume</button></div><div id="chartBox" class="chartbox"></div><div id="progSummary" class="info-note"></div>';
   past.prepend(chartCard);past.prepend(statsCard);past.prepend(syncCard);
@@ -590,6 +590,15 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
   // Future UI.
   const intro=document.createElement('div');intro.className='card';intro.innerHTML='<div class="section-title">8-week program</div><div class="info-note"><strong>Tuesday = Challenge.</strong> Progress the machines when earned.<br><strong>Wednesday = Lighter.</strong> Build consistency without wrecking recovery.</div>';
   const futureList=document.createElement('div');future.appendChild(intro);future.appendChild(futureList);
+
+  // Shared-history lock UI.
+  const historyLockNotice=document.createElement('div');historyLockNotice.className='card';historyLockNotice.id='historyLockNotice';
+  historyLockNotice.innerHTML='<div class="section-title">Smart history</div><div class="info-note"><strong>Shared history is locked.</strong><br>Unlock once this session to see last-week sets, reps, weight, progression suggestions, and shared progress charts.<br><button class="compact-btn" id="todayUnlockHistory" style="margin-top:10px">Unlock shared history</button></div>';
+  if(today.firstElementChild) today.firstElementChild.after(historyLockNotice); else today.prepend(historyLockNotice);
+
+  const historyModal=document.createElement('div');historyModal.id='historyPasswordModal';historyModal.className='modal hide';
+  historyModal.innerHTML=`<div class="modal-card"><h2>Unlock shared history</h2><p>Enter the workout group's shared password. It is kept only for this browser session.</p><input id="historyPassword" class="field" type="password" autocomplete="current-password" placeholder="Shared password"><div id="historyPasswordError" style="color:#a33;font-weight:800;min-height:22px;margin-top:8px"></div><div class="grid2" style="margin-top:8px"><button class="secondary" id="cancelHistoryUnlock">Cancel</button><button class="primary" id="confirmHistoryUnlock" style="margin-top:0">Unlock</button></div></div>`;
+  document.body.appendChild(historyModal);
 
   // Add last-card styling and cardio reminder.
   const lastBox=document.getElementById('lastEntry');lastBox.classList.add('info-note');
@@ -607,7 +616,7 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
   // Replace Recent Entries with merged history.
   renderHistory=function(){const body=document.getElementById('history');body.innerHTML='';const arr=mine().slice().reverse().slice(0,30);if(!arr.length){body.innerHTML='<tr><td colspan="4" class="subtle">No history found yet.</td></tr>';return}arr.forEach(x=>{const tr=document.createElement('tr'),detail=x.type==='cardio'?`${x.setting||''}${x.rpe!==null&&x.rpe!==undefined?` · RPE ${x.rpe}`:''}`:`${x.sets||x.reps.length} sets · ${(x.reps||[]).join(' / ')} reps · ${x.weight} lb`;tr.innerHTML=`<td>${fmt(x.date,{month:'short',day:'numeric'})}</td><td>${x.type==='cardio'?'Cardio':'Lift'}</td><td><strong>${x.activity}</strong></td><td>${detail}</td>`;body.appendChild(tr)})};
 
-  function renderSync(){const el=document.getElementById('syncStatus');if(!el)return;const c=syncState==='good'?'good':syncState==='warn'?'warn':syncState==='bad'?'bad':'';el.innerHTML=`<span class="syncdot ${c}"></span>${syncMessage}`}
+  function renderSync(){const el=document.getElementById('syncStatus');if(!el)return;const c=syncState==='good'?'good':syncState==='warn'?'warn':syncState==='bad'?'bad':'';el.innerHTML=`<span class="syncdot ${c}"></span>${syncMessage}`;const refresh=document.getElementById('syncRefresh'),lock=document.getElementById('lockHistory');if(refresh)refresh.textContent=sharedUnlocked?'Refresh encrypted history':'Unlock history';if(lock)lock.classList.toggle('hide',!sharedUnlocked);if(historyLockNotice)historyLockNotice.classList.toggle('hide',sharedUnlocked)}
   function populateExercises(){const el=document.getElementById('histExercise');if(!el)return;const cur=el.value,names=[...new Set([...TUESDAY,...WEDNESDAY].map(x=>x.name).concat(mine().filter(x=>x.type==='exercise').map(x=>x.activity)))].sort();el.innerHTML=names.map(n=>`<option>${n}</option>`).join('');if(names.includes(cur))el.value=cur;if(!el.value&&names.length)el.value=names[0]}
   function renderStats(){const a=mine();document.getElementById('stDays').textContent=new Set(a.map(x=>x.date)).size;document.getElementById('stLifts').textContent=a.filter(x=>x.type==='exercise').length;document.getElementById('stCardio').textContent=a.filter(x=>x.type==='cardio').length}
   function renderChart(){const box=document.getElementById('chartBox'),sel=document.getElementById('histExercise');if(!box||!sel)return;const name=sel.value,pts=mine().filter(x=>x.type==='exercise'&&x.activity===name&&x.weight!==null&&x.weight!==undefined).map(x=>({...x,metric:chartMetric==='weight'?numberVal(x.weight):numberVal(x.weight)*(x.reps||[]).reduce((a,b)=>a+b,0)}));if(!pts.length){box.innerHTML='<div class="chart-empty">No historical data for this exercise yet.</div>';document.getElementById('progSummary').textContent='Log this exercise over multiple weeks to see your trend.';return}const vals=pts.map(p=>p.metric),min=Math.min(...vals),max=Math.max(...vals),W=760,H=250,L=52,R=18,T=22,B=42,range=Math.max(1,max-min),xx=i=>L+(pts.length===1?(W-L-R)/2:i*(W-L-R)/(pts.length-1)),yy=v=>T+(max-v)/range*(H-T-B);let grid='',labels='';for(let i=0;i<5;i++){const v=max-range*i/4,y=yy(v);grid+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="#e6ebf2"/>`;labels+=`<text x="${L-8}" y="${y+4}" text-anchor="end" font-size="11" fill="#667085">${Math.round(v)}</text>`}const path=pts.map((p,i)=>`${i?'L':'M'} ${xx(i)} ${yy(p.metric)}`).join(' '),dots=pts.map((p,i)=>`<circle cx="${xx(i)}" cy="${yy(p.metric)}" r="5" fill="#2457d6"><title>${fmt(p.date)} · ${Math.round(p.metric)}</title></circle>`).join(''),step=Math.max(1,Math.ceil(pts.length/5)),xl=pts.map((p,i)=>(i%step===0||i===pts.length-1)?`<text x="${xx(i)}" y="${H-14}" text-anchor="middle" font-size="10" fill="#667085">${fmt(p.date,{month:'short',day:'numeric'})}</text>`:'').join('');box.innerHTML=`<svg viewBox="0 0 ${W} ${H}">${grid}${labels}<path d="${path}" fill="none" stroke="#2457d6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>${dots}${xl}<text x="${L}" y="14" font-size="11" fill="#667085">${chartMetric==='weight'?'Weight (lb)':'Volume (lb × reps)'}</text></svg>`;const first=pts[0],last=pts[pts.length-1],d=last.metric-first.metric;document.getElementById('progSummary').innerHTML=`<strong>${name}</strong> · ${pts.length} logged sessions.${pts.length>1?` ${chartMetric==='weight'?'Working weight':'Training volume'} changed by <strong>${d>=0?'+':''}${Math.round(d)}</strong> from first to latest entry.`:' Add another session to start a trend.'}`}
@@ -655,40 +664,117 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
     return out;
   }
 
-  async function syncRemote(){
-    syncState='loading';syncMessage='Refreshing shared history…';renderSync();
+  function b64ToBytes(s){const bin=atob(String(s||'')),out=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)out[i]=bin.charCodeAt(i);return out}
+  async function deriveHistoryKey(password,salt,iterations){
+    const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveKey']);
+    return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+  }
+  async function decryptHistoryPayload(text,password){
+    if(!window.crypto?.subtle)throw new Error('This browser does not support the Web Crypto API needed to unlock history.');
+    let p;try{p=JSON.parse(String(text||''))}catch(e){throw new Error('Encrypted history file is not valid JSON.')}
+    if(p.v!==1||!p.salt||!p.iv||!p.ciphertext)throw new Error('Encrypted history file format is not recognized.');
+    const salt=b64ToBytes(p.salt),iv=b64ToBytes(p.iv),cipher=b64ToBytes(p.ciphertext);
+    const key=await deriveHistoryKey(password,salt,Number(p.iterations)||310000);
+    let plain;
+    try{plain=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,cipher)}catch(e){throw new Error('Incorrect password or the encrypted file is damaged.')}
+    return new TextDecoder().decode(plain);
+  }
+  function sessionGetPassword(){try{return sessionStorage.getItem('workoutHistoryPassword')||''}catch(e){return''}}
+  function sessionSetPassword(v){try{if(v)sessionStorage.setItem('workoutHistoryPassword',v);else sessionStorage.removeItem('workoutHistoryPassword')}catch(e){}}
+  function askHistoryPassword(message=''){
+    return new Promise(resolve=>{
+      const input=document.getElementById('historyPassword'),err=document.getElementById('historyPasswordError'),modal=document.getElementById('historyPasswordModal');
+      err.textContent=message;input.value='';modal.classList.remove('hide');setTimeout(()=>input.focus(),50);
+      const cleanup=()=>{document.getElementById('confirmHistoryUnlock').onclick=null;document.getElementById('cancelHistoryUnlock').onclick=null;input.onkeydown=null;modal.classList.add('hide')};
+      const submit=()=>{const v=input.value;cleanup();resolve(v||null)};
+      document.getElementById('confirmHistoryUnlock').onclick=submit;
+      document.getElementById('cancelHistoryUnlock').onclick=()=>{cleanup();resolve(null)};
+      input.onkeydown=e=>{if(e.key==='Enter')submit();if(e.key==='Escape'){cleanup();resolve(null)}};
+    });
+  }
+  async function fetchEncryptedHistory(){
     try{
       const sep=RAW_URL.includes('?')?'&':'?';
       const res=await fetch(RAW_URL+sep+'v='+Date.now(),{cache:'no-store'});
       if(!res.ok)throw new Error('HTTP '+res.status);
-      remoteEntries=parseCsvRecords(await res.text());
-      localStorage.setItem('cachedRemoteEntries',JSON.stringify(remoteEntries));
-      syncState='good';
-      syncMessage=`Synced ${remoteEntries.length} shared records · ${new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}`;
+      const text=await res.text();
+      try{localStorage.setItem('cachedEncryptedHistory',text)}catch(e){}
+      return text;
     }catch(e){
-      syncState='warn';
-      syncMessage='Couldn’t refresh the GitHub CSV. Using cached/local data; manual CSV load is available.';
+      let cached='';try{cached=localStorage.getItem('cachedEncryptedHistory')||''}catch(_){}
+      if(cached)return cached;
+      throw new Error('Could not download the encrypted GitHub history and no encrypted cache is available.');
     }
-    renderPast();renderExercises();updateLast();renderCardioStatus();renderFuture();
+  }
+  async function loadEncryptedHistoryText(encryptedText,password){
+    const csv=await decryptHistoryPayload(encryptedText,password);
+    remoteEntries=parseCsvRecords(csv);sharedUnlocked=true;sessionSetPassword(password);
+    syncState='good';syncMessage=`Unlocked ${remoteEntries.length} shared records · ${new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}`;
+    renderPast();renderExercises();updateLast();renderCardioStatus();renderFuture();renderSync();
+    return true;
+  }
+  async function unlockSharedHistory(passwordOverride='',silent=false,encryptedOverride=''){
+    if(sharedUnlocked && !encryptedOverride)return true;
+    let password=passwordOverride||sessionGetPassword(),error='';
+    while(true){
+      if(!password){
+        if(silent)return false;
+        password=await askHistoryPassword(error);
+        if(!password)return false;
+      }
+      syncState='loading';syncMessage='Unlocking encrypted history…';renderSync();
+      try{
+        const encryptedText=encryptedOverride||await fetchEncryptedHistory();
+        await loadEncryptedHistoryText(encryptedText,password);
+        return true;
+      }catch(e){
+        sessionSetPassword('');sharedUnlocked=false;remoteEntries=[];
+        syncState='bad';syncMessage=e.message||'Could not unlock shared history.';renderSync();
+        if(silent)return false;
+        error=(e.message||'Could not unlock shared history.')+' Try again.';
+        password='';encryptedOverride='';
+      }
+    }
+  }
+  function lockSharedHistory(){
+    sharedUnlocked=false;remoteEntries=[];sessionSetPassword('');
+    syncState='idle';syncMessage='Shared history locked';
+    renderPast();renderExercises();updateLast();renderCardioStatus();renderFuture();renderSync();
   }
 
-  document.getElementById('syncRefresh').onclick=syncRemote;
-  document.getElementById('csvManual').addEventListener('change',async e=>{
+  document.getElementById('syncRefresh').onclick=()=>sharedUnlocked?unlockSharedHistory(sessionGetPassword(),false):unlockSharedHistory();
+  document.getElementById('lockHistory').onclick=lockSharedHistory;
+  document.getElementById('todayUnlockHistory').onclick=()=>unlockSharedHistory();
+  document.getElementById('encManual').addEventListener('change',async e=>{
     const f=e.target.files?.[0];if(!f)return;
+    let password=sessionGetPassword();
+    if(!password)password=await askHistoryPassword();
+    if(!password)return;
     try{
-      remoteEntries=parseCsvRecords(await f.text());
-      localStorage.setItem('cachedRemoteEntries',JSON.stringify(remoteEntries));
-      syncState='good';syncMessage=`Loaded ${remoteEntries.length} records from ${f.name}`;
-      renderPast();renderExercises();updateLast();renderCardioStatus();renderFuture();
+      await loadEncryptedHistoryText(await f.text(),password);
+      syncMessage=`Unlocked ${remoteEntries.length} records from ${f.name}`;renderSync();
     }catch(err){
-      syncState='bad';syncMessage='Could not read that CSV.';renderSync();
-    }
+      sessionSetPassword('');sharedUnlocked=false;remoteEntries=[];syncState='bad';syncMessage=err.message||'Could not unlock that encrypted file.';renderSync();
+    }finally{e.target.value=''}
   });
+
+  const smartUpdateLast=updateLast;
+  updateLast=function(){
+    smartUpdateLast();
+    const box=document.getElementById('lastEntry');
+    if(!sharedUnlocked && exercise && box){
+      box.style.display='block';
+      const note=document.createElement('div');note.className='challenge-note';
+      note.innerHTML='🔒 Shared history is locked. <button class="linkbtn" id="unlockFromExercise">Unlock once this session</button> to check your most recent shared sets, reps, and weight.';
+      box.appendChild(note);
+      setTimeout(()=>{const b=document.getElementById('unlockFromExercise');if(b)b.onclick=()=>unlockSharedHistory()},0);
+    }
+  };
 
   // Ensure name changes re-filter the shared data.
   const oldRenderNames=renderNames;renderNames=function(){oldRenderNames();document.querySelectorAll('#nameChoices .bigbtn').forEach(b=>{const old=b.onclick;b.onclick=()=>{old();setTimeout(()=>{renderPast();renderFuture();renderExercises();renderCardioStatus()},0)}})};renderNames();
 
-  renderExercises();renderCardioStatus();renderPast();renderFuture();syncRemote();
+  renderExercises();renderCardioStatus();renderPast();renderFuture();renderSync();const rememberedPassword=sessionGetPassword();if(rememberedPassword)unlockSharedHistory(rememberedPassword,true);
 })();
 </script>
 </body>
