@@ -539,9 +539,13 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
 
 <script id="history-enhancements-js">
 (function(){
-  const RAW_URL='https://raw.githubusercontent.com/nchambe/workout-tracker/main/group-workout-raw-data.enc';
+  const ENCRYPTED_HISTORY_URLS=[
+    './group-workout-raw-data.enc',
+    'https://raw.githubusercontent.com/nchambe/workout-tracker/main/group-workout-raw-data.enc'
+  ];
   const PROGRAM_START='2026-10-06', PROGRAM_WEEKS=8;
   let remoteEntries=[]; let syncState='idle', syncMessage='Shared history locked'; let chartMetric='weight'; let sharedUnlocked=false;
+  console.info('[Workout Tracker] Encrypted history sources:', ENCRYPTED_HISTORY_URLS);
   try{localStorage.removeItem('cachedRemoteEntries')}catch(e){}
 
   function nname(s){return String(s||'').trim().toLowerCase()}
@@ -692,29 +696,51 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
       input.onkeydown=e=>{if(e.key==='Enter')submit();if(e.key==='Escape'){cleanup();resolve(null)}};
     });
   }
-  async function fetchEncryptedHistory(){
-    try{
-      const sep=RAW_URL.includes('?')?'&':'?';
-      const res=await fetch(RAW_URL+sep+'v='+Date.now(),{cache:'no-store'});
-      if(!res.ok)throw new Error('HTTP '+res.status);
-      const text=await res.text();
-      try{localStorage.setItem('cachedEncryptedHistory',text)}catch(e){}
-      return text;
-    }catch(e){
-      let cached='';try{cached=localStorage.getItem('cachedEncryptedHistory')||''}catch(_){}
-      if(cached)return cached;
-      throw new Error('Could not download the encrypted GitHub history and no encrypted cache is available.');
+  async function fetchEncryptedHistory(forceNetwork=false){
+    const errors=[];
+    for(const url of ENCRYPTED_HISTORY_URLS){
+      try{
+        const sep=url.includes('?')?'&':'?';
+        const res=await fetch(url+sep+'v='+Date.now(),{cache:'no-store'});
+        if(!res.ok)throw new Error('HTTP '+res.status);
+        const text=await res.text();
+
+        // Catch the common mistake of fetching a GitHub HTML page instead of the .enc file.
+        const trimmed=text.trim();
+        if(!trimmed.startsWith('{') || !trimmed.includes('"ciphertext"')){
+          throw new Error('Downloaded file does not look like encrypted workout data');
+        }
+
+        try{
+          localStorage.setItem('cachedEncryptedHistory',text);
+          localStorage.setItem('cachedEncryptedHistoryUrl',url);
+        }catch(e){}
+        return text;
+      }catch(e){
+        errors.push(`${url}: ${e.message||e}`);
+      }
     }
+
+    if(!forceNetwork){
+      let cached='';
+      try{cached=localStorage.getItem('cachedEncryptedHistory')||''}catch(_){}
+      if(cached)return cached;
+    }
+
+    throw new Error('Could not download encrypted history. '+errors.join(' | '));
   }
   async function loadEncryptedHistoryText(encryptedText,password){
     const csv=await decryptHistoryPayload(encryptedText,password);
     remoteEntries=parseCsvRecords(csv);sharedUnlocked=true;sessionSetPassword(password);
-    syncState='good';syncMessage=`Unlocked ${remoteEntries.length} shared records · ${new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}`;
+    syncState='good';
+    let source='';
+    try{source=localStorage.getItem('cachedEncryptedHistoryUrl')||''}catch(e){}
+    syncMessage=`Unlocked ${remoteEntries.length} shared records${source?` · ${source.startsWith('./')?'GitHub Pages':'GitHub raw'}`:''} · ${new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}`;
     renderPast();renderExercises();updateLast();renderCardioStatus();renderFuture();renderSync();
     return true;
   }
-  async function unlockSharedHistory(passwordOverride='',silent=false,encryptedOverride=''){
-    if(sharedUnlocked && !encryptedOverride)return true;
+  async function unlockSharedHistory(passwordOverride='',silent=false,encryptedOverride='',forceRefresh=false){
+    if(sharedUnlocked && !encryptedOverride && !forceRefresh)return true;
     let password=passwordOverride||sessionGetPassword(),error='';
     while(true){
       if(!password){
@@ -724,7 +750,7 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
       }
       syncState='loading';syncMessage='Unlocking encrypted history…';renderSync();
       try{
-        const encryptedText=encryptedOverride||await fetchEncryptedHistory();
+        const encryptedText=encryptedOverride||await fetchEncryptedHistory(forceRefresh);
         await loadEncryptedHistoryText(encryptedText,password);
         return true;
       }catch(e){
@@ -742,7 +768,7 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
     renderPast();renderExercises();updateLast();renderCardioStatus();renderFuture();renderSync();
   }
 
-  document.getElementById('syncRefresh').onclick=()=>sharedUnlocked?unlockSharedHistory(sessionGetPassword(),false):unlockSharedHistory();
+  document.getElementById('syncRefresh').onclick=()=>sharedUnlocked?unlockSharedHistory(sessionGetPassword(),false,'',true):unlockSharedHistory();
   document.getElementById('lockHistory').onclick=lockSharedHistory;
   document.getElementById('todayUnlockHistory').onclick=()=>unlockSharedHistory();
   document.getElementById('encManual').addEventListener('change',async e=>{
