@@ -87,7 +87,7 @@
 </style>
 
 <style id="history-enhancements">
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;position:sticky;top:0;z-index:30;background:var(--bg);padding:5px 0 8px}.tab{min-height:48px;border:2px solid var(--line);background:#fff;border-radius:14px;font-weight:900;cursor:pointer}.tab.active{background:var(--primary);border-color:var(--primary);color:#fff}.app-view{display:none}.app-view.active{display:block}.syncrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.syncdot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#aaa;margin-right:6px}.syncdot.good{background:var(--good)}.syncdot.warn{background:#d69e00}.syncdot.bad{background:#b33}.compact-tools{display:flex;gap:8px;flex-wrap:wrap}.compact-btn{border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 11px;font-weight:850;cursor:pointer}.info-note{margin-top:10px;background:var(--soft);border:1px solid #cad9ff;border-radius:14px;padding:11px 12px;color:#294a8a;line-height:1.35}.challenge-note{margin-top:7px;font-weight:900}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:11px}.stat strong{display:block;font-size:22px;color:var(--primary)}.select{width:100%;min-height:54px;border:2px solid var(--line);border-radius:14px;background:#fff;padding:9px 11px;font-size:17px;font-weight:800;color:var(--text)}.metric-toggle{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.metricbtn{min-height:43px;border:2px solid var(--line);background:#fff;border-radius:12px;font-weight:850;cursor:pointer}.metricbtn.active{background:var(--primary);border-color:var(--primary);color:#fff}.chartbox{width:100%;min-height:260px;border:1px solid var(--line);border-radius:15px;background:#fff;padding:6px;margin-top:10px;overflow:hidden}.chartbox svg{width:100%;height:260px;display:block}.chart-empty{height:250px;display:grid;place-items:center;color:var(--muted);text-align:center;padding:20px}.session{border:1px solid var(--line);border-radius:15px;padding:12px;margin:9px 0;background:#fff}.session.past{opacity:.72}.session .exlist{margin:8px 0 0;padding-left:20px;color:#445}.session .exlist li{margin:3px 0}.phase{font-size:12px;font-weight:900;color:var(--primary);margin-top:4px}.week-label{font-size:12px;color:var(--muted);margin-top:3px}.badge.good{background:var(--softgreen);color:var(--good)}.badge.warn{background:#fff2c8;color:#856000}.shared-source{font-size:12px;color:var(--muted);margin-top:7px}#xlsxManual{display:none}@media(max-width:640px){.stats{grid-template-columns:repeat(3,1fr)}.tabs{top:0}}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;position:sticky;top:0;z-index:30;background:var(--bg);padding:5px 0 8px}.tab{min-height:48px;border:2px solid var(--line);background:#fff;border-radius:14px;font-weight:900;cursor:pointer}.tab.active{background:var(--primary);border-color:var(--primary);color:#fff}.app-view{display:none}.app-view.active{display:block}.syncrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.syncdot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#aaa;margin-right:6px}.syncdot.good{background:var(--good)}.syncdot.warn{background:#d69e00}.syncdot.bad{background:#b33}.compact-tools{display:flex;gap:8px;flex-wrap:wrap}.compact-btn{border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 11px;font-weight:850;cursor:pointer}.info-note{margin-top:10px;background:var(--soft);border:1px solid #cad9ff;border-radius:14px;padding:11px 12px;color:#294a8a;line-height:1.35}.challenge-note{margin-top:7px;font-weight:900}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:11px}.stat strong{display:block;font-size:22px;color:var(--primary)}.select{width:100%;min-height:54px;border:2px solid var(--line);border-radius:14px;background:#fff;padding:9px 11px;font-size:17px;font-weight:800;color:var(--text)}.metric-toggle{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.metricbtn{min-height:43px;border:2px solid var(--line);background:#fff;border-radius:12px;font-weight:850;cursor:pointer}.metricbtn.active{background:var(--primary);border-color:var(--primary);color:#fff}.chartbox{width:100%;min-height:260px;border:1px solid var(--line);border-radius:15px;background:#fff;padding:6px;margin-top:10px;overflow:hidden}.chartbox svg{width:100%;height:260px;display:block}.chart-empty{height:250px;display:grid;place-items:center;color:var(--muted);text-align:center;padding:20px}.session{border:1px solid var(--line);border-radius:15px;padding:12px;margin:9px 0;background:#fff}.session.past{opacity:.72}.session .exlist{margin:8px 0 0;padding-left:20px;color:#445}.session .exlist li{margin:3px 0}.phase{font-size:12px;font-weight:900;color:var(--primary);margin-top:4px}.week-label{font-size:12px;color:var(--muted);margin-top:3px}.badge.good{background:var(--softgreen);color:var(--good)}.badge.warn{background:#fff2c8;color:#856000}.shared-source{font-size:12px;color:var(--muted);margin-top:7px}#csvManual{display:none}@media(max-width:640px){.stats{grid-template-columns:repeat(3,1fr)}.tabs{top:0}}
 </style>
 </head>
 <body>
@@ -539,7 +539,7 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
 
 <script id="history-enhancements-js">
 (function(){
-  const RAW_URL='https://sharepointlibrarian.wordpress.com/wp-content/uploads/2026/10/group-workout-raw-data.xlsx';
+  const RAW_URL='https://raw.githubusercontent.com/nchambe/workout-tracker/main/group-workout-raw-data.csv';
   const PROGRAM_START='2026-10-06', PROGRAM_WEEKS=8;
   let remoteEntries=[]; let syncState='idle', syncMessage='Not synced yet'; let chartMetric='weight';
   try{remoteEntries=JSON.parse(localStorage.getItem('cachedRemoteEntries')||'[]')||[]}catch(e){}
@@ -580,7 +580,7 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
   const nw=document.getElementById('notWorkout');if(nw)nw.querySelector('.notice').innerHTML='<strong>Not a scheduled workout day.</strong><br>Use <strong>Past</strong> to review progress or <strong>Future</strong> to preview upcoming Tuesday/Wednesday sessions.';
 
   // Past UI.
-  const syncCard=document.createElement('div');syncCard.className='card';syncCard.innerHTML=`<div class="section-title">Shared history</div><div class="syncrow"><div id="syncStatus"><span class="syncdot"></span>Not synced yet</div><div class="compact-tools"><button class="compact-btn" id="syncRefresh">Refresh</button><label class="compact-btn" for="xlsxManual">Load XLSX manually</label><input id="xlsxManual" type="file" accept=".xlsx,.xls"></div></div><div class="shared-source">Source: group-workout-raw-data.xlsx. Local phone entries are merged automatically.</div>`;
+  const syncCard=document.createElement('div');syncCard.className='card';syncCard.innerHTML=`<div class="section-title">Shared history</div><div class="syncrow"><div id="syncStatus"><span class="syncdot"></span>Not synced yet</div><div class="compact-tools"><button class="compact-btn" id="syncRefresh">Refresh</button><label class="compact-btn" for="csvManual">Load CSV manually</label><input id="csvManual" type="file" accept=".csv,text/csv"></div></div><div class="shared-source">Source: GitHub group-workout-raw-data.csv. Local phone entries are merged automatically.</div>`;
   const statsCard=document.createElement('div');statsCard.className='card';statsCard.innerHTML='<div class="section-title">Progress summary</div><div class="stats"><div class="stat"><strong id="stDays">0</strong><span>workout days</span></div><div class="stat"><strong id="stLifts">0</strong><span>lift entries</span></div><div class="stat"><strong id="stCardio">0</strong><span>cardio starts</span></div></div>';
   const chartCard=document.createElement('div');chartCard.className='card';chartCard.innerHTML='<div class="section-title">Exercise progress</div><select id="histExercise" class="select"></select><div class="metric-toggle"><button class="metricbtn active" data-m="weight">Weight used</button><button class="metricbtn" data-m="volume">Training volume</button></div><div id="chartBox" class="chartbox"></div><div id="progSummary" class="info-note"></div>';
   past.prepend(chartCard);past.prepend(statsCard);past.prepend(syncCard);
@@ -618,14 +618,72 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
   function nh(s){return String(s??'').toLowerCase().replace(/[^a-z0-9]/g,'')}
   const aliases={person:['name','person','user','username'],date:['date','workoutdate','entrydate'],timestamp:['timestamp','datetime','created','createdat'],day:['day','workoutday'],type:['entrytype','type','recordtype'],activity:['activity','exercise','exercisename','movement'],machine:['machineorsetting','machine','equipment','setting'],setting:['setting','machineorsetting','cardiosetting'],sets:['sets','setcount','numberofsets'],reps:['reps','repetitions','repcount'],weight:['weightlb','weight','lbs','load'],rpe:['rpe','effort']};
   function field(o,k){for(const key of Object.keys(o)){if(aliases[k].includes(nh(key)))return o[key]}return''}
-  function normDate(v){if(v instanceof Date&&!Number.isNaN(v.getTime()))return dateKey(v);if(typeof v==='number'&&v>20000&&window.XLSX?.SSF){const x=XLSX.SSF.parse_date_code(v);if(x)return`${x.y}-${String(x.m).padStart(2,'0')}-${String(x.d).padStart(2,'0')}`}const s=String(v??'').trim(),m=s.match(/(20\d{2})[-\/](\d{1,2})[-\/](\d{1,2})/);if(m)return`${m[1]}-${String(m[2]).padStart(2,'0')}-${String(m[3]).padStart(2,'0')}`;const d=new Date(s);return Number.isNaN(d.getTime())?'':dateKey(d)}
+  function normDate(v){if(v instanceof Date&&!Number.isNaN(v.getTime()))return dateKey(v);const s=String(v??'').trim(),m=s.match(/(20\d{2})[-\/](\d{1,2})[-\/](\d{1,2})/);if(m)return`${m[1]}-${String(m[2]).padStart(2,'0')}-${String(m[3]).padStart(2,'0')}`;const d=new Date(s);return Number.isNaN(d.getTime())?'':dateKey(d)}
   function normRec(o){const person=String(field(o,'person')||'').trim(),activity=String(field(o,'activity')||'').trim();let date=normDate(field(o,'date')),ts=field(o,'timestamp');if(!date&&ts)date=normDate(ts);if(!person||!activity||!date)return null;let type=String(field(o,'type')||'').toLowerCase(),weight=numberVal(field(o,'weight')),rpe=numberVal(field(o,'rpe')),repsx=parseReps(field(o,'reps'));if(!repsx.length){const vals=[];for(const k of Object.keys(o)){const nk=nh(k);if(/^set\d+reps?$/.test(nk)||/^rep\d+$/.test(nk)){const v=numberVal(o[k]);if(v!==null)vals.push(v)}}repsx=vals}const sets=numberVal(field(o,'sets'))??(repsx.length||null);type=type.includes('card')?'cardio':type.includes('exer')||type.includes('lift')?'exercise':((rpe!==null&&(weight===null||['treadmill','elliptical','bike'].some(x=>activity.toLowerCase().includes(x))))?'cardio':'exercise');return{timestamp:ts?String(ts):'',date,person,day:String(field(o,'day')||''),type,activity,machine:String(field(o,'machine')||''),setting:String(field(o,'setting')||field(o,'machine')||''),sets,reps:repsx,weight,rpe}}
-  async function xlsxLib(){if(window.XLSX)return true;for(const src of['https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js','https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js']){try{await new Promise((ok,bad)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=bad;document.head.appendChild(s)});if(window.XLSX)return true}catch(e){}}return false}
-  function rowsFromWb(wb){const out=[];wb.SheetNames.forEach(sn=>{const g=XLSX.utils.sheet_to_json(wb.Sheets[sn],{header:1,defval:'',raw:true});if(!g.length)return;let hi=-1;for(let i=0;i<Math.min(g.length,15);i++){const a=g[i].map(nh),score=['name','person','date','activity','exercise','entrytype','reps','weightlb','weight'].filter(h=>a.includes(h)).length;if(score>=3){hi=i;break}}if(hi<0)return;const heads=g[hi].map((h,i)=>String(h||`col${i}`));for(let r=hi+1;r<g.length;r++){if(g[r].every(v=>v===''||v===null||v===undefined))continue;const o={};heads.forEach((h,i)=>o[h]=g[r][i]);const rec=normRec(o);if(rec)out.push(rec)}});return out}
-  async function parseBuf(buf){if(!await xlsxLib())throw new Error('Excel parser unavailable');return rowsFromWb(XLSX.read(buf,{type:'array',cellDates:true}))}
-  async function syncRemote(){syncState='loading';syncMessage='Refreshing shared history…';renderSync();try{if(!await xlsxLib())throw new Error('parser');const sep=RAW_URL.includes('?')?'&':'?',res=await fetch(RAW_URL+sep+'v='+Date.now(),{cache:'no-store'});if(!res.ok)throw new Error('HTTP '+res.status);remoteEntries=await parseBuf(await res.arrayBuffer());localStorage.setItem('cachedRemoteEntries',JSON.stringify(remoteEntries));syncState='good';syncMessage=`Synced ${remoteEntries.length} shared records · ${new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}`}catch(e){syncState='warn';syncMessage='Couldn’t refresh the hosted workbook. Using cached/local data; manual XLSX load is available.'}renderPast();renderExercises();updateLast();renderCardioStatus();renderFuture()}
+  function parseCsvText(text){
+    const rows=[]; let row=[], cell='', quoted=false;
+    text=String(text||'').replace(/^\uFEFF/,'');
+    for(let i=0;i<text.length;i++){
+      const c=text[i], next=text[i+1];
+      if(c==='"'){
+        if(quoted && next==='"'){cell+='"';i++}
+        else quoted=!quoted;
+      }else if(c===',' && !quoted){
+        row.push(cell);cell='';
+      }else if((c==='\n'||c==='\r') && !quoted){
+        if(c==='\r' && next==='\n')i++;
+        row.push(cell);
+        if(row.some(v=>String(v).trim()!==''))rows.push(row);
+        row=[];cell='';
+      }else cell+=c;
+    }
+    if(cell.length||row.length){row.push(cell);if(row.some(v=>String(v).trim()!==''))rows.push(row)}
+    return rows;
+  }
+
+  function parseCsvRecords(text){
+    const rows=parseCsvText(text);
+    if(rows.length<2)return[];
+    const headers=rows[0].map(h=>String(h||'').trim());
+    const out=[];
+    for(let i=1;i<rows.length;i++){
+      const o={};
+      headers.forEach((h,j)=>o[h]=rows[i][j]??'');
+      const rec=normRec(o);
+      if(rec)out.push(rec);
+    }
+    return out;
+  }
+
+  async function syncRemote(){
+    syncState='loading';syncMessage='Refreshing shared history…';renderSync();
+    try{
+      const sep=RAW_URL.includes('?')?'&':'?';
+      const res=await fetch(RAW_URL+sep+'v='+Date.now(),{cache:'no-store'});
+      if(!res.ok)throw new Error('HTTP '+res.status);
+      remoteEntries=parseCsvRecords(await res.text());
+      localStorage.setItem('cachedRemoteEntries',JSON.stringify(remoteEntries));
+      syncState='good';
+      syncMessage=`Synced ${remoteEntries.length} shared records · ${new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}`;
+    }catch(e){
+      syncState='warn';
+      syncMessage='Couldn’t refresh the GitHub CSV. Using cached/local data; manual CSV load is available.';
+    }
+    renderPast();renderExercises();updateLast();renderCardioStatus();renderFuture();
+  }
+
   document.getElementById('syncRefresh').onclick=syncRemote;
-  document.getElementById('xlsxManual').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{remoteEntries=await parseBuf(await f.arrayBuffer());localStorage.setItem('cachedRemoteEntries',JSON.stringify(remoteEntries));syncState='good';syncMessage=`Loaded ${remoteEntries.length} records from ${f.name}`;renderPast();renderExercises();updateLast();renderCardioStatus();renderFuture()}catch(err){syncState='bad';syncMessage='Could not read that workbook.';renderSync()}});
+  document.getElementById('csvManual').addEventListener('change',async e=>{
+    const f=e.target.files?.[0];if(!f)return;
+    try{
+      remoteEntries=parseCsvRecords(await f.text());
+      localStorage.setItem('cachedRemoteEntries',JSON.stringify(remoteEntries));
+      syncState='good';syncMessage=`Loaded ${remoteEntries.length} records from ${f.name}`;
+      renderPast();renderExercises();updateLast();renderCardioStatus();renderFuture();
+    }catch(err){
+      syncState='bad';syncMessage='Could not read that CSV.';renderSync();
+    }
+  });
 
   // Ensure name changes re-filter the shared data.
   const oldRenderNames=renderNames;renderNames=function(){oldRenderNames();document.querySelectorAll('#nameChoices .bigbtn').forEach(b=>{const old=b.onclick;b.onclick=()=>{old();setTimeout(()=>{renderPast();renderFuture();renderExercises();renderCardioStatus()},0)}})};renderNames();
