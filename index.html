@@ -116,7 +116,7 @@
   <div id="notWorkout" class="card hide">
     <div class="notice">
       <strong>Not a scheduled workout day.</strong><br>
-      This tracker automatically shows the Tuesday challenge workout or Wednesday lighter workout when that day arrives.
+      This tracker automatically shows the scheduled Challenge or Lighter workout when that date arrives.
     </div>
   </div>
 
@@ -218,6 +218,56 @@ const WEDNESDAY = [
   {name:"Ab Crunch", machine:"Abdominal Crunch machine", range:[12,15]}
 ];
 
+// Explicit program calendar. Weeks 1–2 stay Tue/Wed as completed.
+// Weeks 3–6 shift to Mon/Tue. Weeks 7–8 return to Tue/Wed unless changed later.
+const PROGRAM_SCHEDULE = [
+  {week:1, start:"2026-10-06", sessions:[
+    {date:"2026-10-06", kind:"challenge"},
+    {date:"2026-10-07", kind:"lighter"}
+  ]},
+  {week:2, start:"2026-10-13", sessions:[
+    {date:"2026-10-13", kind:"challenge"},
+    {date:"2026-10-14", kind:"lighter"}
+  ]},
+  {week:3, start:"2026-10-19", sessions:[
+    {date:"2026-10-19", kind:"challenge"},
+    {date:"2026-10-20", kind:"lighter"}
+  ]},
+  {week:4, start:"2026-10-26", sessions:[
+    {date:"2026-10-26", kind:"challenge"},
+    {date:"2026-10-27", kind:"lighter"}
+  ]},
+  {week:5, start:"2026-11-02", sessions:[
+    {date:"2026-11-02", kind:"challenge"},
+    {date:"2026-11-03", kind:"lighter"}
+  ]},
+  {week:6, start:"2026-11-09", sessions:[
+    {date:"2026-11-09", kind:"challenge"},
+    {date:"2026-11-10", kind:"lighter"}
+  ]},
+  {week:7, start:"2026-11-17", sessions:[
+    {date:"2026-11-17", kind:"challenge"},
+    {date:"2026-11-18", kind:"lighter"}
+  ]},
+  {week:8, start:"2026-11-24", sessions:[
+    {date:"2026-11-24", kind:"challenge"},
+    {date:"2026-11-25", kind:"lighter"}
+  ]}
+];
+
+function weekdayNameForDateKey(s){
+  const [y,m,d]=String(s).split("-").map(Number);
+  return new Date(y,m-1,d).toLocaleDateString(undefined,{weekday:"long"});
+}
+
+function scheduledSessionForDate(s){
+  for(const wk of PROGRAM_SCHEDULE){
+    const session=wk.sessions.find(x=>x.date===s);
+    if(session) return {...session, week:wk.week, dayName:weekdayNameForDateKey(s)};
+  }
+  return null;
+}
+
 let profileName = localStorage.getItem("profileName") || "";
 let exercise=null, setCount=null, reps=[], cardioMode=null, cardioRPE=null;
 
@@ -228,12 +278,17 @@ function localDateKey(d=new Date()){
 const now = new Date();
 const todayKey = localDateKey(now);
 const niceDate = now.toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"});
-const dayNum = now.getDay();
-
 function workoutForToday(){
-  if(dayNum===2) return {label:"Tuesday · Challenge", short:"Tuesday", list:TUESDAY};
-  if(dayNum===3) return {label:"Wednesday · Lighter", short:"Wednesday", list:WEDNESDAY};
-  return null;
+  const session=scheduledSessionForDate(todayKey);
+  if(!session) return null;
+  const isChallenge=session.kind==="challenge";
+  return {
+    label:`${session.dayName} · ${isChallenge?"Challenge":"Lighter"}`,
+    short:session.dayName,
+    kind:session.kind,
+    list:isChallenge?TUESDAY:WEDNESDAY,
+    week:session.week
+  };
 }
 const workout = workoutForToday();
 
@@ -543,7 +598,7 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
     './group-workout-raw-data.enc',
     'https://raw.githubusercontent.com/nchambe/workout-tracker/main/group-workout-raw-data.enc'
   ];
-  const PROGRAM_START='2026-10-06', PROGRAM_WEEKS=8;
+  const PROGRAM_WEEKS=PROGRAM_SCHEDULE.length;
   let remoteEntries=[]; let syncState='idle', syncMessage='Shared history locked'; let chartMetric='weight'; let sharedUnlocked=false;
   console.info('[Workout Tracker] Encrypted history sources:', ENCRYPTED_HISTORY_URLS);
   try{localStorage.removeItem('cachedRemoteEntries')}catch(e){}
@@ -554,9 +609,9 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
   function fmt(s,opt={month:'short',day:'numeric',year:'numeric'}){const d=parseDateKey(s);return d?d.toLocaleDateString(undefined,opt):s}
   function addDays(s,n){const d=parseDateKey(s);d.setDate(d.getDate()+n);return dateKey(d)}
   function ddiff(a,b){return Math.floor((parseDateKey(a)-parseDateKey(b))/86400000)}
-  function pweek(s){const d=ddiff(s,PROGRAM_START);return d<0||d>=56?null:Math.floor(d/7)+1}
+  function pweek(s){const i=PROGRAM_SCHEDULE.findIndex((w,idx)=>{const next=PROGRAM_SCHEDULE[idx+1]?.start;return s>=w.start&&(!next||s<next)});return i>=0?PROGRAM_SCHEDULE[i].week:null}
   function phase(w){if(!w)return'';if(w<=2)return'Learn · establish clean starting weights';if(w<=4)return'Build · add reps or weight when earned';if(w===5)return'Recover · about 10–15% lighter or one fewer set';return'Push · resume progression and finish stronger'}
-  function workoutForDate(s){const d=parseDateKey(s).getDay();if(d===2)return{short:'Tuesday',list:TUESDAY};if(d===3)return{short:'Wednesday',list:WEDNESDAY};return null}
+  function workoutForDate(s){const session=scheduledSessionForDate(s);if(!session)return null;return{short:session.dayName,kind:session.kind,list:session.kind==='challenge'?TUESDAY:WEDNESDAY,week:session.week}}
   function numberVal(v){if(typeof v==='number')return Number.isFinite(v)?v:null;const n=parseFloat(String(v??'').replace(/[^0-9.\-]/g,''));return Number.isFinite(n)?n:null}
   function parseReps(v){if(Array.isArray(v))return v.map(numberVal).filter(x=>x!==null);return String(v??'').split(/[^0-9]+/).map(numberVal).filter(x=>x!==null)}
   function ekey(x){return[x.date,nname(x.person),x.type,x.activity,x.sets||'',Array.isArray(x.reps)?x.reps.join('|'):'',x.weight??'',x.setting||'',x.rpe??''].join('~')}
@@ -565,7 +620,7 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
   function recent(arr){return arr.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')||(b.timestamp||'').localeCompare(a.timestamp||''))[0]||null}
   function priorExercise(name){return recent(mine().filter(x=>x.type==='exercise'&&x.activity===name&&x.date<=todayKey))}
   function priorCardio(){return recent(mine().filter(x=>x.type==='cardio'&&x.date<=todayKey))}
-  function defaultSets(ex){if(workout?.short==='Wednesday')return 2;return ['Shoulder Press','Ab Crunch'].includes(ex.name)?2:3}
+  function defaultSets(ex){if(workout?.kind==='lighter')return 2;return ['Shoulder Press','Ab Crunch'].includes(ex.name)?2:3}
   function guidance(ex,last){if(!last)return'No prior entry found yet. Choose a controlled starting weight and leave about 1–2 good reps in reserve.';const rr=last.reps||[],min=ex.range[0],max=ex.range[1],allTop=rr.length&&rr.every(r=>r>=max),anyLow=rr.some(r=>r<min);if(allTop){const next=numberVal(last.weight)!==null?numberVal(last.weight)+5:null;return`You hit the top of the range on every set last time. If form was solid, try the next available weight increment today${next!==null?` (around ${next} lb if the machine allows)`:''}, then rebuild within ${min}–${max} reps.`}if(anyLow)return`Keep ${last.weight} lb and try to bring every set into the ${min}–${max} target before increasing load.`;return`Try to beat last time by at least one clean rep. Keep ${last.weight} lb unless it felt clearly too easy.`}
 
   // Tabs / views: move the existing Recent Entries card into Past.
@@ -581,7 +636,7 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
 
   // Week label and non-workout wording.
   const dateEl=document.getElementById('dateLabel');const wl=document.createElement('div');wl.className='week-label';const wk=pweek(todayKey);wl.textContent=wk?`Week ${wk} of 8 · ${phase(wk)}`:'Outside the 8-week program window';dateEl.after(wl);
-  const nw=document.getElementById('notWorkout');if(nw)nw.querySelector('.notice').innerHTML='<strong>Not a scheduled workout day.</strong><br>Use <strong>Past</strong> to review progress or <strong>Future</strong> to preview upcoming Tuesday/Wednesday sessions.';
+  const nw=document.getElementById('notWorkout');if(nw)nw.querySelector('.notice').innerHTML='<strong>Not a scheduled workout day.</strong><br>Use <strong>Past</strong> to review progress or <strong>Future</strong> to preview upcoming scheduled sessions.';
 
   // Past UI.
   const syncCard=document.createElement('div');syncCard.className='card';syncCard.innerHTML=`<div class="section-title">Shared history</div><div class="syncrow"><div id="syncStatus"><span class="syncdot"></span>Shared history locked</div><div class="compact-tools"><button class="compact-btn" id="syncRefresh">Unlock history</button><button class="compact-btn hide" id="lockHistory">Lock</button><label class="compact-btn" for="encManual">Load encrypted file</label><input id="encManual" type="file" accept=".enc,.json,application/json,text/plain"></div></div><div class="shared-source">Source: encrypted GitHub file <strong>group-workout-raw-data.enc</strong>. Your password is never stored in GitHub.</div>`;
@@ -592,7 +647,7 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
   document.getElementById('histExercise').addEventListener('change',renderChart);
 
   // Future UI.
-  const intro=document.createElement('div');intro.className='card';intro.innerHTML='<div class="section-title">8-week program</div><div class="info-note"><strong>Tuesday = Challenge.</strong> Progress the machines when earned.<br><strong>Wednesday = Lighter.</strong> Build consistency without wrecking recovery.</div>';
+  const intro=document.createElement('div');intro.className='card';intro.innerHTML='<div class="section-title">8-week program</div><div class="info-note"><strong>Challenge day:</strong> progress the machines when earned.<br><strong>Lighter day:</strong> build consistency without wrecking recovery.<br><span class="subtle">Weeks 1–2: Tue/Wed · Weeks 3–6: Mon/Tue · Weeks 7–8: Tue/Wed</span></div>';
   const futureList=document.createElement('div');future.appendChild(intro);future.appendChild(futureList);
 
   // Shared-history lock UI.
@@ -625,8 +680,8 @@ renderHistory(); renderCardioStatus(); validateCardio(); validateExercise();
   function renderStats(){const a=mine();document.getElementById('stDays').textContent=new Set(a.map(x=>x.date)).size;document.getElementById('stLifts').textContent=a.filter(x=>x.type==='exercise').length;document.getElementById('stCardio').textContent=a.filter(x=>x.type==='cardio').length}
   function renderChart(){const box=document.getElementById('chartBox'),sel=document.getElementById('histExercise');if(!box||!sel)return;const name=sel.value,pts=mine().filter(x=>x.type==='exercise'&&x.activity===name&&x.weight!==null&&x.weight!==undefined).map(x=>({...x,metric:chartMetric==='weight'?numberVal(x.weight):numberVal(x.weight)*(x.reps||[]).reduce((a,b)=>a+b,0)}));if(!pts.length){box.innerHTML='<div class="chart-empty">No historical data for this exercise yet.</div>';document.getElementById('progSummary').textContent='Log this exercise over multiple weeks to see your trend.';return}const vals=pts.map(p=>p.metric),min=Math.min(...vals),max=Math.max(...vals),W=760,H=250,L=52,R=18,T=22,B=42,range=Math.max(1,max-min),xx=i=>L+(pts.length===1?(W-L-R)/2:i*(W-L-R)/(pts.length-1)),yy=v=>T+(max-v)/range*(H-T-B);let grid='',labels='';for(let i=0;i<5;i++){const v=max-range*i/4,y=yy(v);grid+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="#e6ebf2"/>`;labels+=`<text x="${L-8}" y="${y+4}" text-anchor="end" font-size="11" fill="#667085">${Math.round(v)}</text>`}const path=pts.map((p,i)=>`${i?'L':'M'} ${xx(i)} ${yy(p.metric)}`).join(' '),dots=pts.map((p,i)=>`<circle cx="${xx(i)}" cy="${yy(p.metric)}" r="5" fill="#2457d6"><title>${fmt(p.date)} · ${Math.round(p.metric)}</title></circle>`).join(''),step=Math.max(1,Math.ceil(pts.length/5)),xl=pts.map((p,i)=>(i%step===0||i===pts.length-1)?`<text x="${xx(i)}" y="${H-14}" text-anchor="middle" font-size="10" fill="#667085">${fmt(p.date,{month:'short',day:'numeric'})}</text>`:'').join('');box.innerHTML=`<svg viewBox="0 0 ${W} ${H}">${grid}${labels}<path d="${path}" fill="none" stroke="#2457d6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>${dots}${xl}<text x="${L}" y="14" font-size="11" fill="#667085">${chartMetric==='weight'?'Weight (lb)':'Volume (lb × reps)'}</text></svg>`;const first=pts[0],last=pts[pts.length-1],d=last.metric-first.metric;document.getElementById('progSummary').innerHTML=`<strong>${name}</strong> · ${pts.length} logged sessions.${pts.length>1?` ${chartMetric==='weight'?'Working weight':'Training volume'} changed by <strong>${d>=0?'+':''}${Math.round(d)}</strong> from first to latest entry.`:' Add another session to start a trend.'}`}
   function renderPast(){renderSync();populateExercises();renderStats();renderHistory();renderChart()}
-  function renderFuture(){futureList.innerHTML='';for(let w=1;w<=PROGRAM_WEEKS;w++){for(const off of[0,1]){const d=addDays(PROGRAM_START,(w-1)*7+off),wo=workoutForDate(d),done=mine().some(x=>x.date===d&&x.type==='exercise'),pastd=d<todayKey,todayd=d===todayKey,div=document.createElement('div');div.className='session'+(pastd?' past':'');const badge=done?'<span class="badge good">logged</span>':todayd?'<span class="badge warn">today</span>':pastd?'<span class="badge off">past</span>':'<span class="badge">upcoming</span>';div.innerHTML=`<div class="date-row"><div><strong>Week ${w} · ${wo.short}</strong><div class="subtle">${fmt(d,{weekday:'short',month:'short',day:'numeric'})}</div></div>${badge}</div><div class="phase">${phase(w)}</div><ul class="exlist">${wo.list.map(ex=>`<li>${ex.name} · ${defaultSetsForFuture(wo.short,ex)}×${ex.range[0]}–${ex.range[1]}</li>`).join('')}</ul>`;futureList.appendChild(div)}}}
-  function defaultSetsForFuture(day,ex){if(day==='Wednesday')return 2;return['Shoulder Press','Ab Crunch'].includes(ex.name)?2:3}
+  function renderFuture(){futureList.innerHTML='';PROGRAM_SCHEDULE.forEach(ws=>{ws.sessions.forEach(session=>{const d=session.date,wo=workoutForDate(d),done=mine().some(x=>x.date===d&&x.type==='exercise'),pastd=d<todayKey,todayd=d===todayKey,div=document.createElement('div');div.className='session'+(pastd?' past':'');const badge=done?'<span class="badge good">logged</span>':todayd?'<span class="badge warn">today</span>':pastd?'<span class="badge off">past</span>':'<span class="badge">upcoming</span>';const role=session.kind==='challenge'?'Challenge':'Lighter';div.innerHTML=`<div class="date-row"><div><strong>Week ${ws.week} · ${wo.short} · ${role}</strong><div class="subtle">${fmt(d,{weekday:'short',month:'short',day:'numeric'})}</div></div>${badge}</div><div class="phase">${phase(ws.week)}</div><ul class="exlist">${wo.list.map(ex=>`<li>${ex.name} · ${defaultSetsForFuture(session.kind,ex)}×${ex.range[0]}–${ex.range[1]}</li>`).join('')}</ul>`;futureList.appendChild(div)})})}
+  function defaultSetsForFuture(kind,ex){if(kind==='lighter')return 2;return['Shoulder Press','Ab Crunch'].includes(ex.name)?2:3}
 
   function nh(s){return String(s??'').toLowerCase().replace(/[^a-z0-9]/g,'')}
   const aliases={person:['name','person','user','username'],date:['date','workoutdate','entrydate'],timestamp:['timestamp','datetime','created','createdat'],day:['day','workoutday'],type:['entrytype','type','recordtype'],activity:['activity','exercise','exercisename','movement'],machine:['machineorsetting','machine','equipment','setting'],setting:['setting','machineorsetting','cardiosetting'],sets:['sets','setcount','numberofsets'],reps:['reps','repetitions','repcount'],weight:['weightlb','weight','lbs','load'],rpe:['rpe','effort']};
